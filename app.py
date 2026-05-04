@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import pickle
 
 # Page config
 st.set_page_config(page_title="Heart Disease Prediction", page_icon="❤️", layout="centered")
@@ -50,8 +49,12 @@ body, .stApp, .stApp * { font-family: 'Poppins', system-ui, -apple-system, 'Sego
 ''', unsafe_allow_html=True)
 
 # Load model and scaler
-model = pickle.load(open("model.pkl", "rb"))
-scaler = pickle.load(open("scaler.pkl", "rb"))
+import joblib
+import xgboost
+import sklearn
+
+model = joblib.load("model.pkl")
+scaler = joblib.load("scaler.pkl")
 
 # Hero (Streamlit-native)
 with st.container():
